@@ -249,6 +249,7 @@ class PortData(object):
         self.lldp_data = lldp_data
         self.timestamp = None
         self.sent = 0
+		self.delay=0
 
     def lldp_sent(self):
         self.timestamp = time.time()
