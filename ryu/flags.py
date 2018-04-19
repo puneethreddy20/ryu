@@ -20,7 +20,7 @@ global flags
 from distutils.version import LooseVersion
 
 from ryu import cfg
-
+from oslo_config.cfg import Opt
 CONF = cfg.CONF
 
 CONF.register_cli_opts([

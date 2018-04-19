@@ -791,11 +791,11 @@ class Switches(app_manager.RyuApp):
 
                 #get Delay
                 #get the ldap delay
-        for port in self.port.keys():
+        for port in self.ports.keys():
                 if src_dpid == port.dpid and src_port_no ==port.port_no:
                         send_timestamp=self.ports[port].timestamp
-                if send_timestamp:
-                        self.ports[port].delay=recv_timestamp-send_timestamp
+               		if send_timestamp:
+                        	self.ports[port].delay=recv_timestamp-send_timestamp
 
         src = self._get_port(src_dpid, src_port_no)
         if not src or src.dpid == dst_dpid:

@@ -147,13 +147,13 @@ class NetworkDelayDetector(app_manager.RyuApp):
             return
 
     @set_ev_cls(ofp_event.EventOFPPacketIn, MAIN_DISPATCHER)
-    def packet_in_handler(self, ev):
+    def lldp_packet_in_handler(self, ev):
         """
             Parsing LLDP packet and get the delay of link.
         """
         msg = ev.msg
         try:
-            src_dpid, src_port_no = LLDPPacket.lldp_parse(msg.data)
+            src_dpid, src_port_no,timestamp = LLDPPacket.lldp_parse(msg.data)
             dpid = msg.datapath.id
             if self.sw_module is None:
                 self.sw_module = lookup_service_brick('switches')
